@@ -7,6 +7,12 @@ struct link_list {
 };
 
 static inline void
+link_list_init(struct link_list *node)
+{
+	node->prev = node->next = node;
+}
+
+static inline void
 __list_insert(struct link_list *node,
               struct link_list *prev,
               struct link_list *next)
