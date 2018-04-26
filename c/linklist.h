@@ -36,6 +36,18 @@ list_insert_after(struct link_list *node, struct link_list *ref)
 }
 
 static inline void
+list_insert_head(struct link_list *head, struct link_list *node)
+{
+	list_insert_after(node, head);
+}
+
+static inline void
+list_insert_tail(struct link_list *head, struct link_list *node)
+{
+	list_insert_before(node, head);
+}
+
+static inline void
 list_delete(struct link_list *node)
 {
 	node->prev->next = node->next;
