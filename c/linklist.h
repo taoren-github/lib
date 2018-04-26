@@ -24,15 +24,22 @@ __list_insert(struct link_list *node,
 }
 
 static inline void
-list_add_before(struct link_list *node, struct link_list *ref)
+list_insert_before(struct link_list *node, struct link_list *ref)
 {
 	__list_insert(node, ref->prev, ref);
 }
 
 static inline void
-list_add_after(struct link_list *node, struct link_list *ref)
+list_insert_after(struct link_list *node, struct link_list *ref)
 {
 	__list_insert(node, ref, ref->next);
+}
+
+static inline void
+list_delete(struct link_list *node)
+{
+	node->prev->next = node->next;
+	node->next->prev = node->prev;
 }
 
 #endif /* __LINK_LIST_H__ */
